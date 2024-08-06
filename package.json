@@ -1,0 +1,16 @@
+{
+  "name": "backand-main-project",
+  "version": "1.0.0",
+  "description": "a backend code for practice.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "javascript",
+    "backend",
+    "Bishwash"
+  ],
+  "author": "Bishwash Bhusal",
+  "license": "ISC"
+}
