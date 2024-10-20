@@ -2,7 +2,7 @@ import { Router } from "express";
 import {
     getChannelStats,
     getChannelVideos
-    } from "../controllers/dashbord.controllers"
+    } from "../controllers/dashbord.controllers.js"
 
 import { verifyJWT } from "../middlewares/auth.middlewares.js";
 
