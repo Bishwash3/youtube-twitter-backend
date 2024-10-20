@@ -84,7 +84,7 @@ const toggleTweetLike = asyncHandler(async (req, res) => {
 
         return res
             .status(200)
-            .json(new ApiResponse(200, { tweetId, isLiked: false }), "Tweet like removed succesfully");
+            .json(new ApiResponse(200, { tweetId, isLiked: false }, "Tweet like removed succesfully"))
     }
 
     await Like.create({
@@ -122,7 +122,7 @@ const getLikedVideos = asyncHandler(async (req, res) => {
                 },
             },
             {
-                $unwind: "$ownerDetais"
+                $unwind: "$ownerDetails"
             },
             ]
         }
