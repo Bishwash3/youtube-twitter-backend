@@ -100,7 +100,7 @@ const addComment = asyncHandler(async (req, res) => {
     const content = req.body
 
     if(!isValidObjectId(videoId)){
-        throw new ApiError(400, "Invalid Video")
+        throw new ApiError(400, "Invalid Video ID")
     }
     if(!content){
         throw new ApiError(404, "Content is Required")
