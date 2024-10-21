@@ -13,8 +13,9 @@ import {verifyJWT} from "../middlewares/auth.middlewares.js"
 const router = Router()
 router.use(verifyJWT)
 
+router.route("/create").post(createPlaylist)
+
 router.route("/:playlistId")
-.post(createPlaylist)
 .get(getPlaylistById)
 .patch(updatePlaylist)
 .delete(deletePlaylist)
