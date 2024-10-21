@@ -21,6 +21,7 @@ import likeRouter from './routes/like.routes.js'
 import commentRouter from './routes/comment.routes.js'
 import dashbordRouter from './routes/dashbord.routes.js'
 import playlistRouter from './routes/playlist.routes.js'
+import healthRouter from './routes/healthcheck.routes.js'
 
 
 // Routes deceleration 
@@ -29,6 +30,7 @@ app.use("/api/v1/likes", likeRouter)
 app.use("/api/v1/comments", commentRouter)
 app.use("api/v1/dashbord", dashbordRouter)
 app.use("api/v1/playlist", playlistRouter)
+app.use("/api/v1/healthcheck", healthRouter)
 
 
 
