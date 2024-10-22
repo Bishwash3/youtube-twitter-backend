@@ -23,7 +23,7 @@ import dashbordRouter from './routes/dashbord.routes.js'
 import playlistRouter from './routes/playlist.routes.js'
 import healthRouter from './routes/healthcheck.routes.js'
 import subscriptionRouter from './routes/subscription.routed.js'
-
+import tweetRouter from './routes/tweet.routes.js'
 
 // Routes deceleration 
 app.use("/api/v1/users", userRouter)
@@ -33,7 +33,8 @@ app.use("/api/v1/dashbord", dashbordRouter)
 app.use("/api/v1/playlist", playlistRouter)
 app.use("/api/v1/healthcheck", healthRouter)
 app.use("/api/v1/subscription", subscriptionRouter)
-
+app.use("/api/v1/subscription", subscriptionRouter)
+app.use("/api/v1/tweets", tweetRouter)
 
 
 
