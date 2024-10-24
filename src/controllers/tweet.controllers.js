@@ -15,7 +15,7 @@ const createTweet = asyncHandler(async (req, res) => {
 
     const user = req.user?._id
 
-    const createdTweet = await Tweet.create(user, {
+    const createdTweet = await Tweet.create({
         content,
         owner: user
     })
@@ -25,7 +25,7 @@ const createTweet = asyncHandler(async (req, res) => {
     }
     
     return res
-    .ststus(200)
+    .status(200)
     .json(
         new ApiResponse(200, createdTweet, "Tweet Created Succesfully")
     )
