@@ -112,7 +112,7 @@ const updateTweet = asyncHandler(async (req, res) => {
     }
 
     if(!isValidObjectId(tweetId)){
-        throw new ApiError(400, "Invalid tweer id")
+        throw new ApiError(400, "Invalid tweet id")
     }
 
     const tweet = await Tweet.findById(tweetId)
@@ -140,7 +140,7 @@ const updateTweet = asyncHandler(async (req, res) => {
     }
 
     return res
-    .ststus(200)
+    .status(200)
     .json(
         new ApiResponse(
             200,
@@ -180,7 +180,7 @@ const deleteTweet = asyncHandler(async (req, res) => {
     }
 
     return res
-    .ststus(200)
+    .status(200)
     .json(
         new ApiResponse(
             200,
