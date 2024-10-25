@@ -5,6 +5,8 @@ import {ApiError} from "../utils/ApiErrors.js"
 import {ApiResponse} from "../utils/ApiResponse.js"
 import {asyncHandler} from "../utils/asynchandler.js"
 import {uploadOnCloudinary, deleteOnCloudinary} from "../utils/cloudinary.js"
+import { Like } from '../modles/like.model.js'
+import { Comment} from '../modles/comment.model.js'
 
 
 const getAllVideos = asyncHandler(async (req, res) => {
@@ -395,7 +397,7 @@ const deleteVideo = asyncHandler(async (req, res) => {
         throw new ApiError(400, "Video Not Found")
     }
 
-    if(video.owner.toString() !== req.user?._id.toString()){
+    if(video.owner?.toString() !== req.user?._id?.toString()){
         throw new ApiError(400, "Only Owner Can Update Video")
     }
 
@@ -438,7 +440,7 @@ const togglePublishStatus = asyncHandler(async (req, res) => {
         throw new ApiError(400, "Video Not Found")
     }
 
-    if(video.owner.toString() !== req.user?._id.toString()){
+    if(video.owner?.toString() !== req.user?._id?.toString()){
         throw new ApiError(400, "Only Owner Can Update Video")
     }
 

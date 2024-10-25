@@ -34,6 +34,6 @@ router.route("/v/:videoId")
 .delete(deleteVideo)
 .patch(upload.single("thumbnail"), updateVideo)
 
-router.route("/toggle/p/videoId").patch(togglePublishStatus)
+router.route("/toggle/p/:videoId").patch(togglePublishStatus)
 
 export default router
