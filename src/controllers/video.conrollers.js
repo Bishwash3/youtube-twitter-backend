@@ -62,7 +62,7 @@ const getAllVideos = asyncHandler(async (req, res) => {
             localField: "owner",
             foreignField: "_id",
             as: "ownerDetails",
-            piepline: [
+            pipeline: [
                 {
                     $project: {
                         username: 1,
@@ -84,7 +84,7 @@ const getAllVideos = asyncHandler(async (req, res) => {
         limit: parseInt(limit, 10)
     }
     
-    const video = await video.aggregatePagiante(videoAggregate, options)
+    const video = await Video.aggregatePaginate(videoAggregate, options)
 
     return res
     .status(200)
@@ -101,12 +101,12 @@ const publishAVideo = asyncHandler(async (req, res) => {
     const { title, description} = req.body
     // TODO: get video, upload to cloudinary, create video
 
-    if(!title.trim() && !description.trim()){
+    if(!title?.trim() && !description?.trim()){
         throw new ApiError(400, "Title And Description Is Required")
     }
 
     const videoFileLocalPath = req.files?.videoFile[0].path
-    const thumbnailFileLocalPath = req.files?.thumbnailFile[0].path
+    const thumbnailFileLocalPath = req.files?.thumbnail[0].path
 
     if(!videoFileLocalPath){
         throw new ApiError(400, "Video File Path Is Required")
@@ -134,12 +134,12 @@ const publishAVideo = asyncHandler(async (req, res) => {
         isPublished: false,
         duration: videoFile.duration,
         videoFile: {
-            url: videoFile.url,
-            public_id: videoFile.public_id
+            url: videoFile.url.toString(),
+            public_id: videoFile.public_id.toString()
         },
         thumbnail: {
-            url: thumbnail.url,
-            public_id: thumbnail.public_id
+            url: thumbnail.url.toString(),
+            public_id: thumbnail.public_id.toString()
         }
     })
 
