@@ -134,12 +134,12 @@ const publishAVideo = asyncHandler(async (req, res) => {
         isPublished: false,
         duration: videoFile.duration,
         videoFile: {
-            url: videoFile.url.toString(),
-            public_id: videoFile.public_id.toString()
+            url: videoFile.url,
+            public_id: videoFile.public_id
         },
         thumbnail: {
-            url: thumbnail.url.toString(),
-            public_id: thumbnail.public_id.toString()
+            url: thumbnail.url,
+            public_id: thumbnail.public_id
         }
     })
 
@@ -334,18 +334,18 @@ const updateVideo = asyncHandler(async (req, res) => {
         throw new ApiError(400, "Video Not Found")
     }
 
-    if(video.owner.toString() !== req.user?._id.toString()){
+    if(video.owner?.toString() !== req.user?._id?.toString()){
         throw new ApiError(400, "Only Owner Can Update Video")
     }
 
-    const thumbnailToDelede = video.public_id
-    const thumbnailLocalPath = req.files?.path
+    const thumbnailToDelete = video.thumbnail.public_id
+    const thumbnailFileLocalPath = req.file?.path
 
-    if(!thumbnailLocalPath){
+    if(!thumbnailFileLocalPath){
         throw new ApiError(400, "Thumbnail is required")
     }
 
-    const thumbnail = await uploadOnCloudinary(thumbnailLocalPath)
+    const thumbnail = await uploadOnCloudinary(thumbnailFileLocalPath)
 
     if(!thumbnail){
         throw new ApiError(400, "thumbnail not found")
@@ -367,7 +367,7 @@ const updateVideo = asyncHandler(async (req, res) => {
 )
 
     if(updateVideo){
-        await deleteOnCloudinary(thumbnailToDelede)
+        await deleteOnCloudinary(thumbnailToDelete)
 
     }else{
         throw new ApiError(400,"Something went wrong while updating video")
