@@ -40,4 +40,4 @@ app.use("/api/v1/videos", videoRouter)
 
 
 
-export { app }
+export default app 
