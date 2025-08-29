@@ -9,14 +9,12 @@ dotenv.config({
 
 connectDB()
 
-// .then( () => {
-//     app.listen(process.env.PORT || 8000 , ()=>{
-//         console.log(`Server is running at pport : ${process.env.PORT}`);
-//     })
+.then( () => {
+    app.listen(process.env.PORT || 8000 , ()=>{
+        console.log(`Server is running at pport : ${process.env.PORT}`);
+    })
 
-// })
-// .catch((err)=>{
-//     console.log("MONGODB connection Failed!!!",err);
-// })
-
-export default app
+})
+.catch((err)=>{
+    console.log("MONGODB connection Failed!!!",err);
+})
